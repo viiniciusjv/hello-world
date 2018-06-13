@@ -1,0 +1,17 @@
+machine:
+  pre:
+    - sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repo$
+    - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 41$
+    - sudo apt-get update
+    - sudo apt-get install dotnet-dev-1.0.0-rc4-004771
+
+compile:
+  override:
+    - dotnet restore
+    - dotnet build
+    - dotnet publish -o publish
+
+test:
+  override:
+    - echo "no tests"
+
